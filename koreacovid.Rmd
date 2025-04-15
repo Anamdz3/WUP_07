@@ -18,21 +18,16 @@ kRdata <- kRdata %>%
 mutate(across(where(is.character), as.factor))
 
 ```
+
 ### Data is from the Patient_Info dataset from South Korea 1 Jan to 1 May 2020
+
 ### This data was retrieved from a downloadable zip file from kaggle
 
-Some of the data was uncoded for sex - sex must be just male or female
-77 of the data entries were coded sex  as blank, so we omit these.
-state of a patient must be died or alive - we adjust that as well   
-  
+Some of the data was uncoded for sex - sex must be just male or female 77 of the data entries were coded sex as blank, so we omit these. state of a patient must be died or alive - we adjust that as well
+
 # Your Question - Is dying independent of sex?
 
-
-
-
-
-
-## Graphical results - use ggplot commands to do this  
+## Graphical results - use ggplot commands to do this
 
 ```{r}
 dd2 <- kRdata %>% group_by(result,Sex) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
@@ -49,20 +44,24 @@ basicCC <- ggplot(dd2,aes(x=result,y=prcnt*100,fill=Sex))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-
-
-
-
-
 The amount of females who got COVID and lived is mmore than males. However, out of the ones who got COVID and passed, the percentage who dided is longer than the percentage of women who died.
 
 ## Numerical results
 
+```{r}
+table1 <- xtabs(~results + Sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
 
-## Inferential results 
+Out of the alive group,12% more women than men survied. Out of the dead group, about 30% more men than women died. 98% of females lived, while 1.4% of men lived, while 3% of men died. Percentage wise it killed about twice the amount of men than it did women.
 
-
+## Inferential results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
 
 
 ## Conclusions
-
