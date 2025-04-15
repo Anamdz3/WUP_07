@@ -44,7 +44,7 @@ basicCC <- ggplot(dd2,aes(x=result,y=prcnt*100,fill=Sex))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-The amount of females who got COVID and lived is mmore than males. However, out of the ones who got COVID and passed, the percentage who dided is longer than the percentage of women who died.
+The amount of females who got COVID and lived is more than males. However, out of the ones who got COVID and passed, the percentage who died is longer than the percentage of women who died.
 
 ## Numerical results
 
@@ -63,5 +63,5 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-
+In our Chi-square result, we received a p-value of 0.0012. Since this vale is <0.05, we reject our null hypothesis. In our Fishers test, we received a p-value of 0.0009 which is also< 0.05 and we reject our null hypothesis.
 ## Conclusions
