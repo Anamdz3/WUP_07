@@ -35,27 +35,27 @@ state of a patient must be died or alive - we adjust that as well
 ## Graphical results - use ggplot commands to do this  
 
 ```{r}
-dd2 <- kRdata %>% group_by(Sex,result) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+dd2 <- kRdata %>% group_by(result,Sex) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
 
 # the group_by followed by summarize(count=n())
 
-basicC <- ggplot(dd2,aes(x=Sex,y=count,fill=result))
+basicC <- ggplot(dd2,aes(x=result,y=count,fill=Sex))
 basicC + geom_bar(stat="identity",position="dodge")
 
 #Now for percentage plot
 
-basicCC <- ggplot(dd2,aes(x=Sex,y=prcnt*100,fill=result)) 
+basicCC <- ggplot(dd2,aes(x=result,y=prcnt*100,fill=Sex)) 
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-  
 
 
 
 
 
-  
+The amount of females who got COVID and lived is mmore than males. However, out of the ones who got COVID and passed, the percentage who dided is longer than the percentage of women who died.
+
 ## Numerical results
 
 
