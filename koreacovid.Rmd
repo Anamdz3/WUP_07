@@ -47,10 +47,21 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 The amount of females who got COVID and lived is more than males. However, out of the ones who got COVID and passed, the percentage who died is longer than the percentage of women who died.
 
 ## Numerical results
+```{r}
+table1 <- xtabs(~result +Sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
 
 Out of the alive group,12% more women than men survied. Out of the dead group, about 30% more men than women died. 98% of females lived, while 1.4% of men lived, while 3% of men died. Percentage wise it killed about twice the amount of men than it did women.
 
 ## Inferential results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
 
 In our Chi-square result, we received a p-value of 0.0012. Since this vale is <0.05, we reject our null hypothesis. In our Fishers test, we received a p-value of 0.0009 which is also< 0.05 and we reject our null hypothesis.
 ## Conclusions
+The questions we were addressing was if dying of COVID is independent of sex or not. We used a sample from Korea and used graphical, numerical, and inferential results to answer this question. Ultimately, we concluded that our null hypothesis should be rejected due to receiving a p-value less than the value of significance. 
