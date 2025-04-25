@@ -48,20 +48,9 @@ The amount of females who got COVID and lived is more than males. However, out o
 
 ## Numerical results
 
-```{r}
-table1 <- xtabs(~results + Sex, data=kRdata)
-rowPerc(table1)
-colPerc(table1)
-```
-
 Out of the alive group,12% more women than men survied. Out of the dead group, about 30% more men than women died. 98% of females lived, while 1.4% of men lived, while 3% of men died. Percentage wise it killed about twice the amount of men than it did women.
 
 ## Inferential results
-```{r}
-chisq.test(table1)
-chisqtestGC(table1)
-fisher.test(table1)
-```
 
 In our Chi-square result, we received a p-value of 0.0012. Since this vale is <0.05, we reject our null hypothesis. In our Fishers test, we received a p-value of 0.0009 which is also< 0.05 and we reject our null hypothesis.
 ## Conclusions
